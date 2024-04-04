@@ -1,0 +1,16 @@
+{
+  "balance": 10,
+  "name": "joao",
+  "document": "1231452a136136",
+  "email": "joao@gmail.com",
+  "password": "senha",
+  "type": "COMMON"
+}
+{
+  "balance": 30,
+  "name": "maria",
+  "document": "12531452a136136",
+  "email": "maria@gmail.com",
+  "password": "senha",
+  "type": "MERCHANT"
+}
