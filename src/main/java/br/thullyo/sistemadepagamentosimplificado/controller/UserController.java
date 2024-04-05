@@ -5,9 +5,12 @@ import br.thullyo.sistemadepagamentosimplificado.domain.User;
 import br.thullyo.sistemadepagamentosimplificado.service.UserService;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,8 +24,15 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity createUser(@RequestBody UserDTO dto){
-        User newUser = service.createUser(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+        try {
+            User newUser = service.createUser(dto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+        } catch (DataIntegrityViolationException e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Documento duplicado", e);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao criar Usuário", e);
+        }
+
     }
 
     @GetMapping

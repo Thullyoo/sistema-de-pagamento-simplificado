@@ -19,9 +19,12 @@ public class UserService {
     }
 
     public User createUser(UserDTO userDTO){
-        User newUser = new User(userDTO);
-        repository.save(newUser);
-        return newUser;
+        User dto = new User(userDTO);
+        User newUser = repository.save(dto);
+        if (newUser == null){
+            return null;
+        }
+        return dto;
     }
 
     public List<User> listUsers(){

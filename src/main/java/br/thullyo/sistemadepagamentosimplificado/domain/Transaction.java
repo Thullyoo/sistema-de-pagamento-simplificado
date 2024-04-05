@@ -1,5 +1,6 @@
 package br.thullyo.sistemadepagamentosimplificado.domain;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,4 +32,11 @@ public class Transaction {
     private LocalDateTime time_transaction;
 
     private BigDecimal amount;
+
+    public Transaction(User payer, User payee, BigDecimal amount, LocalDateTime time_transaction){
+        this.payer = payer;
+        this.payee = payee;
+        this.amount = amount;
+        this.time_transaction =  time_transaction ;
+    }
 }

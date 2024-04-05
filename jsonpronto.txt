@@ -14,3 +14,21 @@
   "password": "senha",
   "type": "MERCHANT"
 }
+{
+  "balance": 100,
+  "name": "luiz",
+  "document": "155231452a136136",
+  "email": "luiz@gmail.com",
+  "password": "senha",
+  "type": "COMMON"
+}
+{
+  "payeeID": 1,
+  "payerID": 2,
+  "amount": 10
+}
+{
+  "payeeID": 1,
+  "payerID": 3,
+  "amount": 85
+}
