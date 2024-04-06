@@ -58,7 +58,7 @@ As requisições e respostas são no formato JSON. Exemplo de como se deve passa
   "type": "MERCHANT"
 }
 {
-  "payeeID": 1,
-  "payerID": 2,
+  "payeeID": 2,
+  "payerID": 1,
   "amount": 10
 }
