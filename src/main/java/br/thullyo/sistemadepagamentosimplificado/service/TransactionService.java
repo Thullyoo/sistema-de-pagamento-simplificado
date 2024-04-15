@@ -4,6 +4,8 @@ import br.thullyo.sistemadepagamentosimplificado.DTO.TransactionResult;
 import br.thullyo.sistemadepagamentosimplificado.domain.Transaction;
 import br.thullyo.sistemadepagamentosimplificado.DTO.TransactionDTO;
 import br.thullyo.sistemadepagamentosimplificado.domain.User;
+import br.thullyo.sistemadepagamentosimplificado.exceptions.NotAutorizedException;
+import br.thullyo.sistemadepagamentosimplificado.exceptions.UserNotFoundException;
 import br.thullyo.sistemadepagamentosimplificado.repository.TransactionRepository;
 import br.thullyo.sistemadepagamentosimplificado.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,10 +50,10 @@ public class TransactionService {
                 return new TransactionResult(newTransaction, "Created Transaction");
 
             } else {
-                return new TransactionResult(null, "Authorization failed"); // Error message
+                throw new NotAutorizedException(); // Error message
             }
         } else {
-            return new TransactionResult(null, "One or both users not found"); // Error message
+            throw new UserNotFoundException(); // Error message
         }
     }
     public List<Transaction> getAllTransactions(){
